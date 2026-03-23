@@ -1,0 +1,63 @@
+{
+  "trusted_asn_numbers": [12345, 67890],
+  "trusted_countries": ["MX", "US"],
+  "trusted_ips": [
+    "192.168.1.100",
+    "10.0.0.50"
+  ],
+  "servers": {
+    "server1_example": { "server_ips": ["192.168.1.10"] },
+    "server2_example": { "server_ips": ["10.0.0.5"] }
+  },
+  "lists": {
+    "phishing_host_tokens": [
+      "examplebank.",
+      ".examplebank.",
+      ".fakepay"
+    ],
+    "phishing_path_keywords": [
+      "verify",
+      "verification",
+      "account-suspended",
+      "login",
+      "confirm"
+    ],
+    "suspicious_file_exts": [
+      ".php",
+      ".phtml",
+      ".jsp",
+      ".aspx"
+    ],
+    "sensitive_path_keywords": [
+      "/.env",
+      "/.git",
+      "/wp-config.php",
+      "/server-status",
+      "/phpmyadmin",
+      "/backup",
+      ".sql",
+      ".zip"
+    ],
+    "web_exploit_path_tokens": [
+      "../",
+      "%2e%2e%2f",
+      "/etc/passwd",
+      "php://",
+      "base64_decode",
+      "union select",
+      "wget",
+      "curl",
+      "whoami"
+    ],
+    "privileged_users": [
+      "root",
+      "admin",
+      "sysadmin"
+    ],
+    "suspicious_asn_numbers": [99999, 88888],
+    "suspicious_asn_org_tokens": [
+      "EXAMPLE-CLOUD",
+      "TEST-HOSTING"
+    ]
+  }
+}

@@ -1,0 +1,143 @@
+manteinance/
+# =========================
+# Python / FastAPI
+# =========================
+__pycache__/
+*.py[cod]
+*.pyo
+
+# =========================
+# Virtualenv (NO subir)
+# =========================
+.venv/
+venv/
+
+# =========================
+# ENV (SÍ subir)
+# =========================
+# ⚠️ Se recomienda ignorar estos archivos de credenciales localmente
+.env
+.env.*
+!.env.example
+.envrc
+agent/sentinelx-agent.env
+
+# =========================
+# Testing / tooling
+# =========================
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# =========================
+# Runtime / SIEM data (NO subir)
+# =========================
+*.log
+logs/
+tmp/
+uploads/
+uploaded_logs/
+raw_logs/
+spool/
+states/
+
+# =========================
+# Comprimidos runtime (NO subir)
+# =========================
+*.gz
+*.tgz
+
+# ZIP solo si son artefactos runtime
+*.zip
+!*.example.zip
+
+# =========================
+# Alembic
+# =========================
+alembic/versions/*.pyc
+alembic/versions/__pycache__/
+
+# ✅ alembic/versions/*.py SÍ se suben
+
+# =========================
+# PostgreSQL / Backups (NO subir)
+# =========================
+backups/
+*.sql
+*.sql.gz
+*.dump
+*.bak
+*.backup
+
+# =========================
+# PostgreSQL init scripts (SÍ subir)
+# =========================
+!postgres/
+!postgres/**
+
+# =========================
+# GeoIP (SÍ subir TODO)
+# =========================
+# ⚠️ Se versionan .mmdb por respaldo
+# geoip/*.mmdb
+# geoip/*.mmdb.*
+
+!geoip/
+!geoip/**
+
+# =========================
+# Docker (SÍ subir)
+# =========================
+# ⚠️ IGNORAR docker-compose reales ya que son autogenerados
+docker-compose.yml
+docker-compose.override.yml
+nginx-local.conf
+
+# Example también
+!docker-compose.example.yml
+
+# =========================
+# Frontend (Astro / Node)
+# =========================
+node_modules/
+dist/
+.astro/
+.cache/
+.turbo/
+.vercel/
+.netlify/
+.output/
+
+front/node_modules/
+front/dist/
+front/.astro/
+front/.cache/
+front/.turbo/
+front/.vercel/
+front/.netlify/
+front/.output/
+
+frontend/node_modules/
+frontend/dist/
+frontend/.astro/
+frontend/.cache/
+
+# Frontend logs (NO subir)
+front/*.log
+frontend/*.log
+
+# =========================
+# Editor / OS
+# =========================
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# =========================
+# Deploy artefacts (NO subir)
+# =========================
+public_html/
+

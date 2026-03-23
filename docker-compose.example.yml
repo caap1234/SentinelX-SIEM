@@ -1,0 +1,106 @@
+# docker-compose.example.yml
+services:
+  db:
+    image: postgres:16
+    container_name: sentinelx-db
+    shm_size: "1g"
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-sentinelx_db}
+      POSTGRES_USER: ${POSTGRES_USER:-sentinelx}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD}
+      POSTGRES_INITDB_ARGS: "--data-checksums"
+    ports:
+      - "${POSTGRES_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./postgres/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-sentinelx} -d ${POSTGRES_DB:-sentinelx_db} -h 127.0.0.1 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+
+  backend:
+    build:
+      context: .
+    container_name: sentinelx-backend
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      UPLOADED_LOGS_DIR: ${UPLOADED_LOGS_DIR:-/app/uploaded_logs}
+      GEOIP_COUNTRY_DB_PATH: ${GEOIP_COUNTRY_DB_PATH:-/geoip/GeoLite2-Country.mmdb}
+      GEOIP_ASN_DB_PATH: ${GEOIP_ASN_DB_PATH:-/geoip/GeoLite2-ASN.mmdb}
+      ENRICH_INLINE: "${ENRICH_INLINE:-1}"
+      ENRICH_CACHE_TTL: "${ENRICH_CACHE_TTL:-86400}"
+      ENRICH_CACHE_MAX: "${ENRICH_CACHE_MAX:-100000}"
+      RULES_RELOAD_SECONDS: "${RULES_RELOAD_SECONDS:-600}"
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - .:/app
+      - ./geoip:/geoip:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: >
+      bash -lc "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+
+  parsing_worker:
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      UPLOADED_LOGS_DIR: ${UPLOADED_LOGS_DIR:-/app/uploaded_logs}
+      GEOIP_COUNTRY_DB_PATH: ${GEOIP_COUNTRY_DB_PATH:-/geoip/GeoLite2-Country.mmdb}
+      GEOIP_ASN_DB_PATH: ${GEOIP_ASN_DB_PATH:-/geoip/GeoLite2-ASN.mmdb}
+      ENRICH_INLINE: "${ENRICH_INLINE:-1}"
+      ENRICH_CACHE_TTL: "${ENRICH_CACHE_TTL:-86400}"
+      ENRICH_CACHE_MAX: "${ENRICH_CACHE_MAX:-100000}"
+      RULES_RELOAD_SECONDS: "${RULES_RELOAD_SECONDS:-600}"
+      WORKER_POLL_SECONDS: "${WORKER_POLL_SECONDS:-2}"
+      WORKER_MAX_PER_CYCLE: "${WORKER_MAX_PER_CYCLE:-1}"
+      WORKER_STALE_SECONDS: "${WORKER_STALE_SECONDS:-3600}"
+    volumes:
+      - .:/app
+      - ./geoip:/geoip:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: >
+      bash -lc "python -m app.workers.parsing_worker_loop"
+
+  engine_worker:
+    build:
+      context: .
+    restart: unless-stopped
+    depends_on:
+      db:
+        condition: service_healthy
+    env_file:
+      - .env
+    environment:
+      GEOIP_COUNTRY_DB_PATH: ${GEOIP_COUNTRY_DB_PATH:-/geoip/GeoLite2-Country.mmdb}
+      GEOIP_ASN_DB_PATH: ${GEOIP_ASN_DB_PATH:-/geoip/GeoLite2-ASN.mmdb}
+      RULES_RELOAD_SECONDS: "${RULES_RELOAD_SECONDS:-600}"
+      ENGINE_WORKER_POLL_SECONDS: "${ENGINE_WORKER_POLL_SECONDS:-1}"
+      ENGINE_WORKER_MAX_PER_CYCLE: "${ENGINE_WORKER_MAX_PER_CYCLE:-200}"
+      ENGINE_WORKER_STALE_SECONDS: "${ENGINE_WORKER_STALE_SECONDS:-3600}"
+    volumes:
+      - .:/app
+      - ./geoip:/geoip:ro
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+    command: >
+      bash -lc "python -m app.workers.engine_worker_loop"
+
+volumes:
+  pgdata:
