@@ -43,27 +43,26 @@ Ya sea que gestiones un VPS individual o un entorno distribuido de microservicio
 
 ---
 
-## 📸 Visual Tour & Screenshots
+## 📸 Tour Visual y Capturas de Pantalla
 
 <p align="center">
-  <i>Explore the SentinelX interface: Modern, responsive, and designed for deep security visibility.</i>
+  <i>Explora la interfaz de SentinelX: Moderna, receptiva y diseñada para una visibilidad profunda de seguridad.</i>
 </p>
 
-| **1. Executive Dashboard** | **2. Correlated Alerts** |
+| **1. Panel Ejecutivo** | **2. Alertas Correlacionadas** |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/7aa93035-bccb-434e-a4a1-ba8302b6d8fb" alt="Dashboard Overview" width="100%"> | <img src="https://github.com/user-attachments/assets/7fd10a8e-ad74-4cc9-a823-9485edc13247" alt="Alerts Dashboard" width="100%"> |
-| *Real-time activity charts and security KPIs at a glance.* | *Centralized view of detected threats and correlations.* |
+| <img src="https://github.com/user-attachments/assets/7aa93035-bccb-434e-a4a1-ba8302b6d8fb" alt="Resumen del Dashboard" width="100%"> | <img src="https://github.com/user-attachments/assets/7fd10a8e-ad74-4cc9-a823-9485edc13247" alt="Dashboard de Alertas" width="100%"> |
+| *Gráficos de actividad en tiempo real y KPIs de seguridad.* | *Vista centralizada de amenazas detectadas y correlaciones.* |
 
-| **3. Deep Forensic Detail** | **4. Incident Management** |
+| **3. Detalle Forense Profundo** | **4. Gestión de Incidentes** |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/b0407ba1-253d-4c9e-9e34-568c34905acf" alt="Alert Details" width="100%"> | <img src="https://github.com/user-attachments/assets/ac772408-84cf-4aa0-8cd1-a908526d3caf" alt="Incident Investigation" width="100%"> |
-| *Extensive evidence collection including raw logs and metrics.* | *Full lifecycle case management for active threats.* |
+| <img src="https://github.com/user-attachments/assets/b0407ba1-253d-4c9e-9e34-568c34905acf" alt="Detalles de Alerta" width="100%"> | <img src="https://github.com/user-attachments/assets/ac772408-84cf-4aa0-8cd1-a908526d3caf" alt="Investigación de Incidentes" width="100%"> |
+| *Recolección de evidencia, incluyendo logs crudos y métricas.* | *Gestión completa del ciclo de vida para amenazas activas.* |
 
-| **5. Entity Intelligence** | **6. Engine Processes** |
+| **5. Inteligencia de Entidades** | **6. Procesos del Motor** |
 |:---:|:---:|
-| <img src="https://github.com/user-attachments/assets/a6c7ce6a-59cb-4944-87fa-d97957304e1e" alt="Entity Risk Scoring" width="100%"> | <img src="https://github.com/user-attachments/assets/eda9bd2b-e0ec-43c7-95f7-97b1a675cf53" alt="System Processes" width="100%"> |
-| *Behavioral analysis and risk scoring for IPs and users.* | *Monitoring correlation engine health and ingest pipelines.* |
-
+| <img src="https://github.com/user-attachments/assets/a6c7ce6a-59cb-4944-87fa-d97957304e1e" alt="Puntuación de Riesgo de Entidad" width="100%"> | <img src="https://github.com/user-attachments/assets/eda9bd2b-e0ec-43c7-95f7-97b1a675cf53" alt="Procesos del Sistema" width="100%"> |
+| *Análisis de comportamiento y puntuación de riesgo para IPs.* | *Monitoreo de la salud del motor y tuberías de ingesta.* |
 
 ---
 
