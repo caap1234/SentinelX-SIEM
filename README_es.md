@@ -43,13 +43,27 @@ Ya sea que gestiones un VPS individual o un entorno distribuido de microservicio
 
 ---
 
-## 📸 Capturas de Pantalla
+## 📸 Visual Tour & Screenshots
 
-*(Agrega tus capturas de pantalla del Dashboard aquí. Solo arrastra las imágenes en este archivo desde la edición en la web de GitHub)*
+<p align="center">
+  <i>Explore the SentinelX interface: Modern, responsive, and designed for deep security visibility.</i>
+</p>
 
-| Dashboard Principal | Alertas y Correlación |
+| **1. Executive Dashboard** | **2. Correlated Alerts** |
 |:---:|:---:|
-| <img src="https://placehold.co/600x350/1f2937/ffffff?text=Agrega+Imagen+Dashboard.png" alt="Dashboard" width="100%"> | <img src="https://placehold.co/600x350/1f2937/ffffff?text=Agrega+Imagen+Alertas.png" alt="Alerts" width="100%"> |
+| <img src="https://github.com/user-attachments/assets/7aa93035-bccb-434e-a4a1-ba8302b6d8fb" alt="Dashboard Overview" width="100%"> | <img src="https://github.com/user-attachments/assets/7fd10a8e-ad74-4cc9-a823-9485edc13247" alt="Alerts Dashboard" width="100%"> |
+| *Real-time activity charts and security KPIs at a glance.* | *Centralized view of detected threats and correlations.* |
+
+| **3. Deep Forensic Detail** | **4. Incident Management** |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/b0407ba1-253d-4c9e-9e34-568c34905acf" alt="Alert Details" width="100%"> | <img src="https://github.com/user-attachments/assets/ac772408-84cf-4aa0-8cd1-a908526d3caf" alt="Incident Investigation" width="100%"> |
+| *Extensive evidence collection including raw logs and metrics.* | *Full lifecycle case management for active threats.* |
+
+| **5. Entity Intelligence** | **6. Engine Processes** |
+|:---:|:---:|
+| <img src="https://github.com/user-attachments/assets/a6c7ce6a-59cb-4944-87fa-d97957304e1e" alt="Entity Risk Scoring" width="100%"> | <img src="https://github.com/user-attachments/assets/eda9bd2b-e0ec-43c7-95f7-97b1a675cf53" alt="System Processes" width="100%"> |
+| *Behavioral analysis and risk scoring for IPs and users.* | *Monitoring correlation engine health and ingest pipelines.* |
+
 
 ---
 
